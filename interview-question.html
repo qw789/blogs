@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+
+ <pre>
+ css
+ 	1.写出几种伪元素.
+	::after ,::before
+	2.what is difference between display:inline and display:inline-block？
+	Inline elements:
+
+	respect left & right margins and padding, but not top & bottom
+	cannot have a width and height set
+	allow other elements to sit to their left and right.
+
+	Block elements:
+
+	respect all of those
+	force a line break after the block element
+
+	Inline-block elements:
+	allow other elements to sit to their left and right
+	respect top & bottom margins and padding
+	respect height and width
+	3.让块级元素水平居中的方法？
+	a.如果知道块的宽度，直接margin：0 auto
+	b.如果不知道宽度 父相对定位，子绝对定位。left:50%;transform:translate(-50%)
+	4.如何设置css，可以使其包含border和padding？
+	  box-sizing: border-box;
+	5.display:none和visibility:hidden区别？
+	display:none means that the tag in question will not appear on the page at all (although you can still interact with it through the dom). There will be no space allocated for it between the other tags.
+
+    visibility:hidden means that unlike display:none, the tag is not visible, but space is allocated for it on the page. The tag is rendered, it just isn't seen on the page.
+    6.鼠标悬浮时，文字缓慢右移10px;鼠标离开后恢复正常。
+js
+1.字符串反转
+str.split("").revease()
+2.输出汉字今天星期几
+var d=new Date();
+var weekday=new Array(7)
+weekday[0]="Sunday"
+weekday[1]="Monday"
+weekday[2]="Tuesday"
+weekday[3]="Wednesday"
+weekday[4]="Thursday"
+weekday[5]="Friday"
+weekday[6]="Saturday"
+
+document.write("Today it is " + weekday[d.getDay()])
+3.字节转换函数
+  function bytesToSize(bytes) {  
+　　if (bytes === 0) return '0 B';
+　　var k = 1024;
+　　sizes = ['B','KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+　　i = Math.floor(Math.log(bytes) / Math.log(k))　　
+　　return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
+　　//toPrecision(3) 后面保留两位小数，如1.00GB  
+} 
+Math.log()/Math.log()  log函数
+Math.pow(x,y)  x的y次方
+Math.floor() 向下舍去 
+ </pre>
+	
+</body>
+</html>
