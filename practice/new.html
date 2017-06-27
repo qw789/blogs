@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>块级元素水平，垂直居中</title>
+        <meta charset="utf-8">
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <style>
+            .wrapper {
+                border: 1px solid gray;
+            }
+            .box {
+                width: 1rem;
+                height: 100px;
+                background: gold;
+                margin: 30px  auto;
+            }
+            html{
+            	font-size: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="box"></div>
+        </div>
+        <input type="radio" name="man">
+        <input type="radio" name="man">
+        <a href="#">sssss</a>
+        <script type="text/javascript">
+        $(document).ready(function(){
+        	$('input:radio').attr('disabled', true);
+        })
+        var str="abc";
+        var reverse=str.split("").reverse().join("")
+        console.log(reverse)
+
+        function bytesToSize(bytes) {  
+　　if (bytes === 0) return '0 B';
+　　var k = 1024;
+　　sizes = ['B','KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+　　i = Math.floor(Math.log(bytes) / Math.log(k))　　
+     console.log(i)
+　　//return (bytes / Math.pow(k, i)) + ' ' + sizes[i];
+　　return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
+　　//toPrecision(3) 后面保留两位小数，如1.00GB  
+} 
+  console.log(bytesToSize(2111))
+        </script>
+    </body>
+</html>

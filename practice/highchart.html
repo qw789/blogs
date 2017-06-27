@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+				canvas{
+					/*border: 1px solid #337AB7;*/
+					display: block; 
+					margin: 50px auto;
+					}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="400" height="400" style="border: 1px solid #DCA7A7;"></canvas>
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+		<script>
+			var canvas = document.getElementById('canvas');
+			var ctx = canvas.getContext('2d');
+			
+			ctx.beginPath();
+			ctx.moveTo(10,30);
+			ctx.lineTo(20,20);
+			ctx.lineTo(30,30);
+			ctx.strokeStyle = 'red';
+			ctx.stroke();
+		    
+		    ctx.beginPath();
+		    ctx.moveTo(20,20);
+		    ctx.lineTo(20,280);
+		    ctx.moveTo(20,280);
+		    ctx.lineTo(300,280);
+		    ctx.strokeStyle = 'red';
+			ctx.stroke();
+			
+			ctx.beginPath();
+			ctx.moveTo(300,280);
+			ctx.lineTo(280,300);
+			ctx.moveTo(300,280);
+			ctx.lineTo(280,260);
+			ctx.strokeStyle = 'red';
+			ctx.stroke();
+			
+		
+				for(var i = 1; i <= 5; i++){
+					        //取整
+			      var sum = Math.floor(Math.random()*280);
+			      ctx.beginPath();
+			      ctx.rect(i*50,280-sum,30,sum);
+			      ctx.fillStyle = bgcolor();
+			      ctx.fill();
+				};
+				function bgcolor(){
+					var r = parseInt(Math.random()*280),
+					    g = parseInt(Math.random()*280),
+					    b = parseInt(Math.random()*280);
+					var color = 'rgb('+r+','+g+','+b+')'    
+					return color;
+				}
+			
+		</script>
+	</body>
+<html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<input type="text" name="" v-model="text">
+		{{text}}
+	</div>
+	<script type="text/javascript">
+		function compile(node,vm){
+			var reg=/\{\{(.*)\}\}/;//.匹配除\r\n在内的任意字符，*匹配n次 \转义
+			//节点类型为元素
+			if(node.nodeType===1){
+				var attr=node.attributes;
+				for(var i=0;i<attr.length;i++){
+					if(attr[i].nodeName=="v-model"){
+						var name=attr[i].nodeValue;
+
+						node.addEventListener('input',function(e){
+							vm[name]=e.target.value;
+						})
+						console.log(node,vm)
+						node.value=vm[name];
+
+						// node.value=vm.data[name];
+						node.removeAttribute('v-model');
+					}
+				}
+			}
+			//节点类型为text
+			if(node.nodeType===3){
+				if(reg.test(node.nodeValue)){
+					var name=RegExp.$1;
+					name=name.trim();
+
+					node.nodeValue=vm[name];
+					// node.nodeValue=vm.data[name];
+				}
+			}
+		}
+
+		function nodeToFragment(node,vm){
+		   	var flag=document.createDocumentFragment();
+		   	var child;
+		   	while(child=node.firstChild){
+		   		compile(child,vm)
+		   		flag.appendChild(child);
+		   	}
+		   	return flag;
+		   }
+
+		function Vue(options){
+			console.log(options)
+			console.log(this)
+			this.data=options.data;
+			var data=this.data
+			//调用obeserve,监听数据
+			observe(data,this)
+
+			var id=options.el;
+			//编译HTML
+			var dom=nodeToFragment(document.getElementById(id),this);
+			document.getElementById(id).appendChild(dom);
+		}
+       function defineReactive(obj,key,val){
+       	  Object.defineProperty(obj,key, {
+       	  	get:function(){
+       	  		return val
+       	  	},
+       	  	set:function(newValue){
+       	  		if(newValue===val) return;
+       	  		val =newValue;
+       	  		console.log(val)
+       	  	}
+       	  })
+       }
+
+       function observe(obj,vm){
+       	Object.keys(obj).forEach(function(key){
+       		defineReactive(vm,key,obj[key]);
+       	})
+       }
+		var vm = new Vue({
+			el:"app",
+			data:{
+				text:"hello world!"
+			}
+		});
+   console.log(vm.data)
+		var pub={
+			publish:function(){
+				dep.notify()
+			}
+		}
+		//三个订阅者
+		var sub1={update:function(){
+			console.log(1)
+		}}
+		var sub2={
+			update:function(){
+				console.log(2)
+			}
+		}
+		var sub3={
+			update:function(){
+				console.log(3)
+			}
+		}
+
+		function Dep(){
+			this.subs=[sub1,sub2,sub3]
+		}
+		Dep.prototype.notify=function(){
+			this.subs.forEach(function(sub){
+				sub.update()
+			})
+		}
+		var dep=new Dep();
+		pub.publish();
+
+
+		//时间戳
+		var timestamp = Date.parse(new Date()); 
+		console.log(timestamp/1000)
+		///////////////////////////////////////
+		var obj = new Proxy({}, {
+  get: function (target, key, receiver) {
+    console.log(`getting ${key}!`);
+    return Reflect.get(target, key, receiver);
+  },
+  set: function (target, key, value, receiver) {
+    console.log(`setting ${key}!`);
+    return Reflect.set(target, key, value, receiver);
+  }
+});
+	</script>
+</body>
+</html>

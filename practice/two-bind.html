@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app">
+	<input type="text" name="" id="a">
+    <span id="b"></span>
+</div>
+
+	<script type="text/javascript">
+		// var obj = { };
+
+  //      // 为obj定义一个名为 hello 的访问器属性
+
+  //      Object.defineProperty(obj, "hello", {
+
+  //        get: function () {return console.log(2222)},
+
+  //        set: function (val) {console.log(333)}
+
+  //      })
+  //    obj.hello;
+  //    obj.hello="dd"
+  //    var obj2={hello2:3};
+     var obj={};
+      Object.defineProperty(obj, "hello", {
+     get:function(){
+        return document.getElementById("a").value;
+     },
+     set: function (newValue) {
+     	document.getElementById("a").value=newValue;
+     	document.getElementById('b').innerHTML=newValue;
+     }
+
+   })
+
+      //给Obj.hello赋值会触发Obj对象里面的set函数。
+      document.addEventListener("keyup",function(e){
+      	obj.hello=e.target.value;
+      })
+   // var dom=nodeToFragment(document.getElementById("app"));
+   // // console.log(dom)
+   // function nodeToFragment(node){
+   // 	var flag=document.createDocumentFragment();
+   // 	var child;
+   // 	while(child=node.firstChild){
+   // 		console.log(node.children,node.firstChild)
+   // 		flag.appendChild(child);
+   // 	}
+   // 	return flag;
+   // }
+	</script>
+</body>
+</html>

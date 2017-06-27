@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+	<textarea id="test">Hello&nbsp;Cruel&nbsp;<br&nbsp;/>World!</textarea>
+	<script type="text/javascript">
+		function replaceHtml( string_to_replace ) 
+    {
+        return string_to_replace.replace(/&nbsp;/g, ' ').replace(/<br.*?>/g, '\n');
+     }
+
+var str = $("#test").val();
+
+$("#test").val(replaceHtml(str));
+	</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul id="app">
+		<li></li>
+		<li></li>
+		<li>222222</li>
+	</ul>
+	<script type="text/javascript">
+	    var dom=nodeToFragment(document.getElementById("app"));
+   console.log(dom)
+   function nodeToFragment(node){
+   	var flag=document.createElement("div");
+   	var child;
+   	while(child=node.firstChild){
+   		// console.log(node.children,node.firstChild)
+   		flag.appendChild(child);
+   	}
+   	return flag;
+   }
+	</script>
+</body>
+</html>

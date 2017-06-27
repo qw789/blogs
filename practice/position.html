@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	.out{
+		width: 300px;
+		height: 300px;
+		background: red;
+		position: relative;
+	}
+	.inner{
+		width: 100px;
+		height: 100px;
+		background: green;
+		position: absolute;
+		left: -20px;
+	}
+</style>
+<body>
+	<div class="out">
+		<div class="inner"></div>
+	</div>
+	<script type="text/javascript">
+		(function () {
+    var o = {
+        a : 7,
+         b(){return this.a +1;},//通过 get,set的 b,c方法间接性修改 a 属性
+         c(x){this.a = x/2}
+    };
+    console.log(o.a);
+    console.log(o.b());
+    o.c(50)
+    console.log(o.a);
+})();
+//es5以后对象里面的方法前面加个set或者get就可以直接调用。。。。！！！！！！！！！！
+// (function () {
+//     var o = null;
+//     o = Object.create(Object.prototype,//指定原型为 Object.prototype
+//             {
+//                 bar:{
+//                     get :function(){
+//                         return 10;
+//                     },
+//                     set : function (val) {
+//                         console.log("Setting `o.bar` to ",val);
+//                     }
+//                 }
+//             }//第二个参数
+//         );
+//     console.log(o.bar);
+//     o.bar = 12;
+// })();
+	</script>
+</body>
+</html>

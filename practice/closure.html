@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+// 		function f1(){
+// 　　　　var n=999;
+// 　　　　nAdd=function(){n+=1}
+// 　　　　function f2(){
+// 　　　　　　alert(n);
+// 　　　　}
+// 　　　　return f2;
+// 　　}
+// 　　var result=f1();
+// 　　result(); // 999
+// 　　nAdd();
+// 　　result(); // 1000
+// function f1(){
+// 　　　　var n=999;
+// 　   nAdd=function(){n+=1}
+// 　　　　return alert(n);
+// 　　}
+//      f1();
+//      nAdd();
+//      f1();
+
+
+//匿名函数自执行，两种方式一样
+// (function(x, y){
+//     alert(x + y);  
+// })(2, 3);
+// (function(x, y){
+//     alert(x + y);  
+// }(2, 3));
+
+// function checkClosure(){
+//     var str = 'rain-man';
+//     setTimeout(
+//         function(){ alert(str); } //这是一个匿名函数
+//     , 2000);
+// }
+// checkClosure();
+var s=(function(){               //匿名函数，会报错
+     return'Lee'; 
+})();
+console.log(s)
+	</script>
+</body>
+</html>
