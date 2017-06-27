@@ -1,0 +1,26 @@
+功能码： 3或4
+寄存器地址：非负整数
+读取数据长度：正整数
+读取数据类型：两个字符，第一个是>或<，第二个是 HhIiLlQqfd
+比例系数：任何数字
+
+
+http://fex.baidu.com/webuploader/
+
+区间选择判断后面选的时间应该大于前面
+
+
+@dblclick="$store.commit('modifyMusicList', item)"
+
+
+echart配置参数
+tooltip提示框formatter参数
+b数据项名称
+c数值
+
+lable标签。饼图默认显示在外部。
+
+paper.js
+
+根据插入id倒排
+SELECT * FROM `ticket` WHERE 1 order by id desc

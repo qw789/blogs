@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+      <progress max="100" value="20"><ie style="width:20%;"></ie></progress>
+      <select>
+          <option>1</option>
+          <option>2</option>
+      </select>
+      <script>
+          var str = "sb you are Super a sb";
+        var reStr = new Set( str ) , newStr = "";
+        reStr.forEach(v => newStr+=v)
+        console.log(newStr)
+        function getNowFormatDate() {
+            var date = new Date();
+            var seperator1 = "-";
+            var seperator2 = ":";
+            var month = date.getMonth() + 1;
+            var strDate = date.getDate();
+            if (month >= 1 && month <= 9) {
+                month = "0" + month;
+            }
+            if (strDate >= 0 && strDate <= 9) {
+                strDate = "0" + strDate;
+            }
+            var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+                    + " " + date.getHours() + seperator2 + date.getMinutes()
+                    + seperator2 + date.getSeconds();
+            return currentdate;
+}
+    console.log(getNowFormatDate())
+var  progress=document.querySelector("progress");
+console.log(progress.position)
+//倒计时
+  function setTimer(data, dom) {
+            var seconds = data;
+            var timer = setInterval(function () {
+                seconds--;
+                if (seconds < 1) {
+                    clearInterval(timer);
+                    console.log("%c 已开奖", "color:red");
+                } else {
+                    console.log("距离开奖还有：" + parseInt(seconds / 60) + "分" + (seconds % 60) + "秒");
+                }
+            }, 1000);
+        }
+//数组求最大值
+console.log(Math.max(1,3,4))
+var arr=[3,4,7]
+function max(arr) {
+   return Math.max.apply(null, arr);
+}
+console.log(max(arr))
+var arr2 = [2, 4, 8, 6, 0];
+var max2 = Math.max(...arr2);
+console.log(max2);
+      </script>
+</body>
+</htm

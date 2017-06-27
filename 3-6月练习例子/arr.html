@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+	<div class="form-inline mt10">
+                                        <span class="divtitle">parameters : </span>
+                                        波特率 <select name="rs485_com1[parameters1]" class="form-control parameters" style="margin-right:10px;">
+                                            <option value="">None</option>
+                                            <option value="600">600</option>
+                                            <option value="1200">1200</option>
+                                            <option value="2400">2400</option>
+                                            <option value="4800">4800</option>
+                                            <option value="9600">9600</option>
+                                            <option value="38400">38400</option>
+                                            <option value="115200">115200</option>
+                                        </select>
+                                        数据位 <select name="rs485_com1[parameters2]" class="form-control parameters" style="margin-right:10px;">
+                                            <option value="">None</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="0">10</option>
+                                        </select>
+                                        校验位 <select name="rs485_com1[parameters3]" class="form-control parameters" style="margin-right:10px;">
+                                            <option value="">None</option>
+                                            <option value="E">E</option>
+                                            <option value="N">N</option>
+                                            <option value="O">O</option>
+                                        </select>
+                                        停止位 <select name="rs485_com1[parameters4]" class="form-control parameters">
+                                            <option value="">None</option>
+                                            <option value="1">1</option>
+                                            <option value="1.5">1.5</option>
+                                            <option value="2">2</option>
+                                        </select>
+  </div>
+  <button>ddddd</button>
+                                    <script type="text/javascript">
+					              
+					     $("button").click(function(){
+					     	var arr=[];
+					     	$('.parameters').each(function(){
+					     		arr.push($(this).val())
+					     	})
+					     	console.log(arr)
+					     })
+                                    </script>
+</body>
+</html>

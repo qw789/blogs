@@ -1,0 +1,30 @@
+冒泡，正则，对象过滤，还有数组转换过滤，都可以处理。
+var str = "sb you are Super a sb", newStr = "";
+str.replace(/./g, function (v) {
+   newStr.indexOf(v) < 0 && (newStr += v)
+});
+svn+dibonssh://dibon.cetlab.org/data/svn/svntest/
+D:\wamp\www\h-eems-web\rootdir\app\wwwroot\app.eemszy.hezongyun.com\application\config
+
+<div class="input-group date form_day">
+                <input class="form-control" style="background-color:#39a4e8;color: #fff" id="target_day" name="target_day" size="16" type="text" value="<?php echo date('Y-m-d'); ?>" readonly>
+                <span class="input-group-addon" style="background-color: #39a4e8;border-radius: 0 20px 20px 0"><span class="glyphicon glyphicon-th"></span></span>
+</div>
+http://172.18.105.43:8080/sdpt/a?login
+
+防抖函数
+const debounce = (fn, delay) => {
+        let timer = null
+        return function () {
+            const ctx = this
+            const args = arguments
+            clearTimeout(timer)
+            timer = setTimeout(() => {
+                fn.apply(ctx, args)
+            }, delay)
+        }
+    }
+    const foo = () => {
+        console.log('you are scrolling')
+    }
+    window.addEventListener('scroll', debounce(foo, 1000))

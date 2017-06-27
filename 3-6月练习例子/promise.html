@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 一个简单的封装
+// function want() {
+//     console.log('这是你想要执行的代码');
+// }
+
+// function fn(want) {
+//     console.log('这里表示执行了一大堆各种代码');
+
+//     // 其他代码执行完毕，最后执行回调函数
+//     want && want();
+// }
+
+// fn(want);
+function want() {
+    console.log('这是你想要执行的代码');
+}
+
+function fn(want) {
+    // 将想要执行的代码放入队列中，根据事件循环的机制，我们就不用非得将它放到最后面了，由你自由选择
+    want && setTimeout(want, 0);
+    console.log('这里表示执行了一大堆各种代码');
+}
+
+fn(want);
+// function want() {
+//     console.log('这是你想要执行的代码');
+// }
+
+// function fn(want) {
+//     console.log('这里表示执行了一大堆各种代码');
+
+//     // 返回Promise对象
+//     return new Promise(function(resolve, reject) {
+//         if (typeof want == 'function') {
+//             resolve(want);
+//         } else {
+//             reject('TypeError: '+ want +'不是一个函数')
+//         }
+//     })
+// }
+
+// fn(want).then(function(want) {
+//     want();
+// })
+
+// fn('1234').catch(function(err) {
+//     console.log(err);
+// })
+
+// function fn(num) {
+//     return new Promise(function(resolve, reject) {
+//         if (typeof num == 'number') {
+//             resolve();
+//         } else {
+//             reject();
+//         }
+//     }).then(function() {
+//         console.log('参数是一个number值');
+//     }).catch(function(){
+//     	console.log('参数不是一个number值')
+//     })
+// }
+
+// // fn('hahha');
+// fn(1234);
+// var url = 'https://hq.tigerbrokers.com/fundamental/finance_calendar/getType/2017-02-26/2017-06-10';
+
+// 封装一个get请求的方法
+function getJSON(url) {
+    return new Promise(function(resolve, reject) {
+        var XHR = new XMLHttpRequest();
+        XHR.open('GET', url, true);
+        XHR.send();
+
+        XHR.onreadystatechange = function() {
+            if (XHR.readyState == 4) {
+                if (XHR.status == 200) {
+                    try {
+                        var response = JSON.parse(XHR.responseText);
+                        resolve(response);
+                    } catch (e) {
+                        reject(e);
+                    }
+                } else {
+                    reject(new Error(XHR.statusText));
+                }
+            }
+        }
+    })
+}
+
+// getJSON(url).then(aa => console.log(aa));
+var url = 'https://hq.tigerbrokers.com/fundamental/finance_calendar/getType/2017-02-26/2017-06-10';
+var url1 = 'https://hq.tigerbrokers.com/fundamental/finance_calendar/getType/2017-03-26/2017-06-10';
+
+function renderAll() {
+    return Promise.all([getJSON(url), getJSON(url1)]);
+}
+
+renderAll().then(function(value) {
+    // 建议大家在浏览器中看看这里的value值
+    console.log(value);
+})
+// function fn(num) {
+//     return new Promise(function(resolve, reject) {
+//         if (typeof num == 'number') {
+//             resolve();
+//         } else {
+//             reject();
+//         }
+//     }).then(function() {
+//         console.log('参数是一个number值');
+//     }, function() {
+//         console.log('参数不是一个number值');
+//     })
+// }
+
+// fn('hahha');
+// fn(1234);
+
+
+// 简单的ajax原生实现
+// var url = 'https://hq.tigerbrokers.com/fundamental/finance_calendar/getType/2017-02-26/2017-06-10';
+// var result;
+
+// var XHR = new XMLHttpRequest();
+// XHR.open('GET', url, true);
+// XHR.send();
+
+// XHR.onreadystatechange = function() {
+//     if (XHR.readyState == 4 && XHR.status == 200) {
+//         result = XHR.response;
+//         console.log(result);
+//     }
+// }
+ 
+
+	</script>
+</body>
+</html>

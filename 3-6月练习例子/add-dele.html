@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+
+function Foo() {
+    var i = 0;
+    return function() {
+        console.log(i++);
+    }
+}
+ //两个都是局部变量
+var f1 = Foo(),
+    f2 = Foo();
+f1();
+f1();
+f2();
+f2();
+f2();
+  </script>
+</body>
+</html>

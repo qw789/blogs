@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	// 	for (var i = 0; i < 3; i++) {
+	// 	     setTimeout((function(s) {
+	// 	         return function() {
+	// 	             console.log(s+1);
+	// 	         };
+	// 	     })(i), 0);  //改为立即执行的函数
+ //     console.log(i);  
+ // }
+
+ //    for(var i=0;i<3;i++){
+ //    setTimeout(function(){
+ //        console.log(i)
+ //    },0);
+ //    console.log(i)
+ // }
+//  var j = 0;  
+// for(var i=0;i<3;i++){  
+//     setTimeout(function(){  
+//         console.log(j);  
+//         console.log(i);  
+//         j++;  
+//     },0);  
+// }  
+var j = 0;  
+for(var i=0;i<3;i++){  
+    setTimeout(function(){  
+        console.log(j);  
+        console.log(i);  
+    },0);  
+    j++;  
+}  
+// setTimeout和click事件差不多,属于注册事件
+//     var promise = new Promise(function(resolve, reject) {
+//     var flag = Math.random();
+//     setTimeout(function() {
+//         if(flag>0.5) {
+//             resolve('success');
+//         }
+//         else {
+//             reject('fail');
+//         }
+//     }, 1000);
+// });
+
+// 	console.log(promise); // 在浏览器的控制台运行的话，它返回的是一个包含了许多属性的Promise对象；在Node.js环境中控制台输出 Promise { <pending> }。
+
+// 	promise.then(function(result) {
+// 	    console.log(result);
+// 	}, function(err) {
+// 	    console.log(err);
+// 	}); // 1s后这里的输出可能是fail也可能是succ
+
+
+	// let promise=new Promise((resolve,reject)=>{
+	// 	setTimeout(()=>{Math.random()>0.5?resolve('success'):reject('fail')},1000)
+	// })
+	// console.log(promise)
+	// promise.then((result)=>{console.log(result)},(error)=>{console.log(error)})
+// 	let p = new Promise((resolve, reject) => {
+//    let flag = Math.random() > 0.5 ? true : false;
+//    if(flag) {
+//        console.log('使用resolve将promise状态从pending变为resolved');
+//        resolve('success');
+//    }
+//    else {
+//        console.log('使用reject将promise状态从pending变为rejected');
+//        reject('fail');
+//    }
+// });
+
+// 	// @1
+// 	p.then((result) => {
+// 	    console.log('接受resolved的结果');
+// 	    console.log(result);
+// 	}, (err) => {
+// 	    console.log('捕获错误的结果');
+// 	    console.log(err);
+// 	});
+// let arr = [1, 2, 3].map(
+//     (value) => {
+//         return new Promise((resolve, reject) => {
+//             setTimeout(() => {
+//                 resolve(value);
+//             }, value * 1000);
+//         });
+//     }
+// );
+
+// console.log(arr);
+
+// let promises = Promise.race(arr)
+//     .then((result) => {
+//         console.log(result);
+//     }).catch((err) => {
+//         console.log(err);
+//     });
+// for(let i=0;i<5;i++){
+// 	setTimeout(function(){
+// 		console.log(i)
+// 	},1000)
+// }
+// for(var i=0;i<5;i++){
+// 	setTimeout(function(){
+// 		console.log(i)
+//       },1000)
+// }
+// var a = [];
+// for (var i = 0; i < 10; i++) {
+//   a[i] = function () {
+//     console.log(i);
+//   };
+// }
+// a[6]();
+// for (var i = 0; i < 5; i++) {
+//     try {
+//         throw i
+//     }
+//     catch (e) {
+//         setTimeout(function () { console.log(e) }, 1000 * i)
+//     }
+// }
+
+	</script>
+</body>
+</html>

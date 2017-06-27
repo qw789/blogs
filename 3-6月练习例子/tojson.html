@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	// [
+	//  {
+	//    'id':'40c',
+	//    'isEnable':'NO'
+	//  }，
+	//  {
+	//   'id':'43d',
+	//    'isEnable':'NO'
+	//  }，
+	//  {
+	//   'id':'4e',
+	//    'isEnable':'NO'
+	//  }，
+	//  {
+	//   'id':'40',
+	//    'isEnable':'NO'
+	//  }
+	// ]
+		var str="id=40c&isEnable=NO&id=40d&isEnable=NO&id=43e&isEnable=NO&id=43f&isEnable=NO&id=40&isEnable=NO&id=403&isEnable=YES"
+	// 	const toJson=function(str){
+	// 		let res=[];
+	// 		let data={};
+	// 		const arr=str.split('&').map(item=>item.split('='))
+	// 		console.log(arr)
+	// 		for([key,key2] of arr){
+	// 			if(data[key]){
+	// 				res.push(data);
+	// 				data={};
+	// 			}
+	// 			data[key]=key2;
+	// 			console.log(data[key])
+	// 		}
+	// 		res.push(data);
+	// 		return res;
+	// 	}
+	// const result=toJson(str)
+	// console.log(result)
+	// var json='[{'+str.replace(/=/g , ':')
+	//                  .replace(/&/g , ',')
+	//                  .replace(/,id/g ,'},{id')
+	//                  +'}]'
+	// console.log(json)
+	// function getJson(key){
+	// 	return '[{'+
+	// 	str.replace(/=/g , ':').replace(/&/g , ',').replace(new RegExp(','+key,'g') , '},{'+key)
+	// 	+'}]'
+	// }
+	// var test=getJson('id');
+	// console.log(getJson('id'))
+	var str2="user=24&id=12&id=34&city=56"
+	function parse(str) {
+  var paramObj = {};
+  var paramArr = str.split('&');
+  for (var i = 0; i < paramArr.length; i++) {
+    var tmp = paramArr[i].split('=');
+    // 把 key 和 value 单独拆开来，会清晰很多
+    var key = tmp[0];
+    var value = tmp[1] || true;
+    if (!paramObj[key]) {
+      paramObj[key] = value;
+      console.log(paramObj)
+    } else {
+      var newValue = [paramObj[key], value];
+      console.log(newValue)
+      paramObj[key] = newValue;
+      console.log(paramObj[key])
+    }
+  }
+
+  return paramObj;
+}
+console.log(parse(str2))
+//---------------------------------------------------------------
+function parse(str) {
+  if (typeof str !== 'string') {
+    return {};
+  }
+
+  var paramObj = {};
+  var paramArr = decodeURI(str).split('&');
+  for (var i = 0; i < paramArr.length; i++) {
+    var tmp = paramArr[i].split('=');
+    var key = tmp[0];
+    var value = tmp[1] || true;
+
+    // 处理数字：很多人忽略这里的类型判断，布尔值传给 Number 也会解析出数字
+    if (typeof value === 'string' && isNaN(Number(value)) === false) {
+      value = Number(value);
+    }
+
+    if (typeof paramObj[key] === 'undefined') {
+      paramObj[key] = value;
+    } else {
+      var newValue = Array.isArray(paramObj[key]) ? paramObj[key] : [paramObj[key]];
+      newValue.push(value);
+      paramObj[key] = newValue;
+    }
+  }
+
+  return paramObj;
+}
+	</script>
+</body>
+</html>

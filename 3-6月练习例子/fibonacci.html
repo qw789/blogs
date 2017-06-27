@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var start = (new Date()).getTime();
+		var fibonacci =function(n) {
+		    return n<2 ? n : arguments.callee(n-1) + arguments.callee(n-2);
+		};
+		fibonacci(38);
+       console.log((new Date()).getTime() - start);
+	</script>
+</body>
+</html>

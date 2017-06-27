@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="js/messages_zh.min.js"></script>
+	<style type="text/css">
+	.panel-body td {
+	padding-bottom: 20px;
+}
+.title-width {
+	text-align: right;
+	padding-right: 10px;
+	font-weight: 700;
+	font-size: 14px;
+}
+.mg-r10 {
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 5px;
+}
+#theform2 input[type='text'], .panel-body td {
+        text-align:right;
+}
+.error {
+	color: red;
+	font-weight: normal;
+}
+.btn,.btn:active,.btn:focus,.btn:hover{border-color:#1fbba6;background: #1fbba6;color: #fff}
+.mt20{
+	margin:0 auto;
+}
+</style>
+</head>
+<body>
+	<div id="select-top">
+			<a href="javascript:;">每月用电量预测</a>
+		</div>
+<div class="row"><!--rowstart-->
+    <div class="col-xs-12">
+          <div class="panel panel-default">
+      
+        <div class="panel-body">
+          <table class="mt20">
+            <tbody>
+                <form id="wrap" method="post" action="">
+                	 <tr>
+                    <td class="title-width"><label for="predict">预测值:</label></td>
+                    <td><input type="text"  class="form-control input-medium" name="predict" id="predict"></td>
+                    <td></td>
+                    <td>万kwh</td>
+                  </tr>
+                  <tr>
+                    <td class="title-width"><label for="max">上限值:</label></td>
+                    <td><input type="text"  class="form-control input-medium" name="max" id="max"></td>
+                      <td></td>
+                     <td>万kwh</td>
+                  </tr>
+                  <tr>
+                    <td class="title-width"><label for="min">下限值:</label></td>
+                    <td><input type="text"  class="form-control input-medium" name="min" id="min"></td>
+                     <td></td>
+                    <td>万kwh</td>
+                    <td>
+                      <label generated="true" class="error"></label>
+                    </td>
+                  </tr>
+                  <tr>
+                  	<td>
+                  		 <input class="btn btn-default submit mt20" style="width:100px;" type="submit" value="提交">
+                  	</td>
+                  </tr>
+                 
+                </form>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      </div>
+</div>
+<script type="text/javascript">
+	$.validator.setDefaults({
+			    submitHandler: function() {
+			      alert("提交注册!");
+			    }
+			});
+	$(function(){
+		 $("#wrap").validate({
+		 debug:true, //调试模式，即使验证成功也不会跳转到目标页面
+		 rules:{ //配置验证规则，key就是被验证的dom对象，value就是调用验证的方法(也是json格式)
+			  predict:{
+			  required:true, //必填。如果验证方法不需要参数，则配置为true
+			  rangelength:[6,12]
+			  },
+         max:{
+        required:true, //必填。如果验证方法不需要参数，则配置为true
+        rangelength:[6,12]
+        },
+         min:{
+        required:true, //必填。如果验证方法不需要参数，则配置为true
+        rangelength:[6,12]
+        }
+		 }
+		 });
+ });
+</script>
+</body>
+</html>
